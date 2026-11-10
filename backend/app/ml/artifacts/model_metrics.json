@@ -1,0 +1,39 @@
+{
+  "model_name": "PropValue_Pune_GradientBoosting_v1.2",
+  "r2_score": 0.988,
+  "mae_inr": 343281.61,
+  "rmse_inr": 496562.33,
+  "median_ape_pct": 3.02,
+  "conformal_interval_coverage_pct": 77.8,
+  "n_samples": 2500,
+  "features": [
+    "base_sqft",
+    "infra_score",
+    "metro_dist",
+    "carpet_area_sqft",
+    "bedrooms",
+    "bathrooms",
+    "floor_number",
+    "total_floors",
+    "age_years",
+    "furnishing",
+    "condition",
+    "parking_count",
+    "road_width_ft"
+  ],
+  "feature_importances": {
+    "base_sqft": 0.1812,
+    "infra_score": 0.0314,
+    "metro_dist": 0.0246,
+    "carpet_area_sqft": 0.637,
+    "bedrooms": 0.0754,
+    "bathrooms": 0.0012,
+    "floor_number": 0.0048,
+    "total_floors": 0.0003,
+    "age_years": 0.0297,
+    "furnishing": 0.0038,
+    "condition": 0.0083,
+    "parking_count": 0.0019,
+    "road_width_ft": 0.0002
+  }
+}
