@@ -17,11 +17,13 @@ import { api } from "@/lib/api";
 import { Property } from "@/types";
 import { formatINR } from "@/lib/utils";
 
+import { PUNE_PROPERTIES } from "@/lib/puneData";
+
 export default function ComparePage() {
-  const [allProperties, setAllProperties] = useState<Property[]>([]);
-  const [selectedIds, setSelectedIds] = useState<string[]>([]);
+  const [allProperties, setAllProperties] = useState<Property[]>(PUNE_PROPERTIES);
+  const [selectedIds, setSelectedIds] = useState<string[]>([PUNE_PROPERTIES[0]?.id || "", PUNE_PROPERTIES[1]?.id || ""]);
   const [comparisonData, setComparisonData] = useState<any[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     async function loadProps() {

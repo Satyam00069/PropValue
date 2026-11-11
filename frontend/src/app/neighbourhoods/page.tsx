@@ -14,12 +14,13 @@ import {
   Compass
 } from "lucide-react";
 import { api } from "@/lib/api";
+import { PUNE_LOCALITIES } from "@/lib/puneData";
 import { Locality } from "@/types";
 
 export default function NeighbourhoodsPage() {
-  const [localities, setLocalities] = useState<Locality[]>([]);
+  const [localities, setLocalities] = useState<Locality[]>(PUNE_LOCALITIES);
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     async function loadData() {

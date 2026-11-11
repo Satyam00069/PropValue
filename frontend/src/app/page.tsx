@@ -20,16 +20,17 @@ import {
   ExternalLink
 } from "lucide-react";
 import { api } from "@/lib/api";
+import { PUNE_LOCALITIES, PUNE_PROPERTIES, PUNE_TRANSACTIONS } from "@/lib/puneData";
 import { Property, PropertyTransaction, Locality } from "@/types";
 import { formatINR } from "@/lib/utils";
 
 export default function HomePage() {
-  const [localities, setLocalities] = useState<Locality[]>([]);
-  const [properties, setProperties] = useState<Property[]>([]);
-  const [transactions, setTransactions] = useState<PropertyTransaction[]>([]);
+  const [localities, setLocalities] = useState<Locality[]>(PUNE_LOCALITIES);
+  const [properties, setProperties] = useState<Property[]>(PUNE_PROPERTIES.slice(0, 4));
+  const [transactions, setTransactions] = useState<PropertyTransaction[]>(PUNE_TRANSACTIONS.slice(0, 4));
   const [selectedLocality, setSelectedLocality] = useState<string>("");
   const [propertyType, setPropertyType] = useState<string>("apartment");
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     async function loadData() {

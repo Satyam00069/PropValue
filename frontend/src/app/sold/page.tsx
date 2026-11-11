@@ -15,16 +15,23 @@ import {
   CheckCircle2
 } from "lucide-react";
 import { api } from "@/lib/api";
+import { PUNE_LOCALITIES, PUNE_TRANSACTIONS } from "@/lib/puneData";
 import { PropertyTransaction, Locality } from "@/types";
 import { formatINR } from "@/lib/utils";
 
 export default function RecentlySoldPage() {
-  const [transactions, setTransactions] = useState<PropertyTransaction[]>([]);
-  const [localities, setLocalities] = useState<Locality[]>([]);
+  const [transactions, setTransactions] = useState<PropertyTransaction[]>(PUNE_TRANSACTIONS);
+  const [localities, setLocalities] = useState<Locality[]>(PUNE_LOCALITIES);
   const [selectedLocality, setSelectedLocality] = useState<string>("");
   const [propertyType, setPropertyType] = useState<string>("");
-  const [stats, setStats] = useState<any>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [stats, setStats] = useState<any>({
+    total_transactions: PUNE_TRANSACTIONS.length,
+    avg_price_sqft: 8420,
+    min_price_sqft: 5100,
+    max_price_sqft: 11220,
+    median_price: 7800000
+  });
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     async function loadData() {

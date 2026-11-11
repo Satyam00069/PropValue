@@ -4,12 +4,13 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Scale, Sparkles, Building2, MapPin, ArrowRight, CheckCircle2, AlertTriangle, ShieldCheck } from "lucide-react";
 import { api } from "@/lib/api";
+import { PUNE_LOCALITIES } from "@/lib/puneData";
 import { Locality, FairPriceAssessment } from "@/types";
 import { formatINR } from "@/lib/utils";
 
 export default function FairPricePage() {
-  const [localities, setLocalities] = useState<Locality[]>([]);
-  const [localityId, setLocalityId] = useState<string>("");
+  const [localities, setLocalities] = useState<Locality[]>(PUNE_LOCALITIES);
+  const [localityId, setLocalityId] = useState<string>(PUNE_LOCALITIES[0]?.id || "");
   const [askingPrice, setAskingPrice] = useState<number>(7500000);
   const [carpetArea, setCarpetArea] = useState<number>(1000);
   const [bedrooms, setBedrooms] = useState<number>(2);

@@ -16,6 +16,7 @@ import {
   X
 } from "lucide-react";
 import { api } from "@/lib/api";
+import { PUNE_LOCALITIES, PUNE_PROPERTIES, PUNE_TRANSACTIONS, PUNE_BUSINESSES } from "@/lib/puneData";
 import { Property, PropertyTransaction, Locality, Business } from "@/types";
 import { formatINR } from "@/lib/utils";
 
@@ -30,17 +31,17 @@ const PropertyMap = dynamic(() => import("@/components/map/PropertyMap"), {
 });
 
 export default function ExploreMapPage() {
-  const [properties, setProperties] = useState<Property[]>([]);
-  const [transactions, setTransactions] = useState<PropertyTransaction[]>([]);
-  const [businesses, setBusinesses] = useState<Business[]>([]);
-  const [localities, setLocalities] = useState<Locality[]>([]);
+  const [properties, setProperties] = useState<Property[]>(PUNE_PROPERTIES);
+  const [transactions, setTransactions] = useState<PropertyTransaction[]>(PUNE_TRANSACTIONS);
+  const [businesses, setBusinesses] = useState<Business[]>(PUNE_BUSINESSES);
+  const [localities, setLocalities] = useState<Locality[]>(PUNE_LOCALITIES);
   const [activeLayer, setActiveLayer] = useState<"properties" | "sold" | "businesses" | "all">("all");
   const [selectedLocality, setSelectedLocality] = useState<string>("");
   const [selectedProperty, setSelectedProperty] = useState<Property | null>(null);
-  const [selectedLocalityData, setSelectedLocalityData] = useState<Locality | null>(null);
+  const [selectedLocalityData, setSelectedLocalityData] = useState<Locality | null>(PUNE_LOCALITIES[0]);
   const [radiusKm, setRadiusKm] = useState<number>(3);
   const [viewMode, setViewMode] = useState<"split" | "map">("split");
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     async function loadMapData() {

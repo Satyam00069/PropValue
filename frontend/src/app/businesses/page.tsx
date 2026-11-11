@@ -18,11 +18,12 @@ import {
 } from "lucide-react";
 import { api } from "@/lib/api";
 import { Business, BusinessGrowthStats, Locality } from "@/types";
+import { PUNE_LOCALITIES, PUNE_BUSINESSES } from "@/lib/puneData";
 
 export default function BusinessGrowthPage() {
-  const [businesses, setBusinesses] = useState<Business[]>([]);
+  const [businesses, setBusinesses] = useState<Business[]>(PUNE_BUSINESSES);
   const [growthStats, setGrowthStats] = useState<BusinessGrowthStats[]>([]);
-  const [localities, setLocalities] = useState<Locality[]>([]);
+  const [localities, setLocalities] = useState<Locality[]>(PUNE_LOCALITIES);
   const [selectedLocality, setSelectedLocality] = useState<string>("");
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [searchName, setSearchName] = useState<string>("");

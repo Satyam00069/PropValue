@@ -28,11 +28,12 @@ import {
 } from "recharts";
 import { api } from "@/lib/api";
 import { Locality, ValuationResponse } from "@/types";
+import { PUNE_LOCALITIES } from "@/lib/puneData";
 import { formatINR } from "@/lib/utils";
 
 export default function ValuationPage() {
-  const [localities, setLocalities] = useState<Locality[]>([]);
-  const [localityId, setLocalityId] = useState<string>("");
+  const [localities, setLocalities] = useState<Locality[]>(PUNE_LOCALITIES);
+  const [localityId, setLocalityId] = useState<string>(PUNE_LOCALITIES[0]?.id || "");
   const [propertyType, setPropertyType] = useState<string>("apartment");
   const [carpetArea, setCarpetArea] = useState<number>(950);
   const [bedrooms, setBedrooms] = useState<number>(2);

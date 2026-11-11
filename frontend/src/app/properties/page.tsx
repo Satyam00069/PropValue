@@ -14,18 +14,19 @@ import {
   ArrowUpDown
 } from "lucide-react";
 import { api } from "@/lib/api";
+import { PUNE_LOCALITIES, PUNE_PROPERTIES } from "@/lib/puneData";
 import { Property, Locality } from "@/types";
 import { formatINR } from "@/lib/utils";
 
 export default function BuyPropertiesPage() {
-  const [properties, setProperties] = useState<Property[]>([]);
-  const [localities, setLocalities] = useState<Locality[]>([]);
+  const [properties, setProperties] = useState<Property[]>(PUNE_PROPERTIES);
+  const [localities, setLocalities] = useState<Locality[]>(PUNE_LOCALITIES);
   const [selectedLocality, setSelectedLocality] = useState<string>("");
-  const [propertyType, setPropertyType] = useState<string>("");
+  const [propertyType, setPropertyType] = useState<string>("apartment");
   const [bedrooms, setBedrooms] = useState<string>("");
   const [fairPriceStatus, setFairPriceStatus] = useState<string>("");
   const [sortBy, setSortBy] = useState<string>("newest");
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
   const [savedPropertyIds, setSavedPropertyIds] = useState<Set<string>>(new Set());
 
   useEffect(() => {

@@ -17,9 +17,11 @@ import { api } from "@/lib/api";
 import { InvestmentOpportunity, Locality, EMICalculatorResponse } from "@/types";
 import { formatINR } from "@/lib/utils";
 
+import { PUNE_LOCALITIES, getClientInvestmentOpportunities } from "@/lib/puneData";
+
 export default function InvestmentPage() {
-  const [opportunities, setOpportunities] = useState<InvestmentOpportunity[]>([]);
-  const [localities, setLocalities] = useState<Locality[]>([]);
+  const [opportunities, setOpportunities] = useState<InvestmentOpportunity[]>(getClientInvestmentOpportunities());
+  const [localities, setLocalities] = useState<Locality[]>(PUNE_LOCALITIES);
   const [selectedLocality, setSelectedLocality] = useState<string>("");
   const [maxBudget, setMaxBudget] = useState<string>("");
   const [minYield, setMinYield] = useState<string>("");

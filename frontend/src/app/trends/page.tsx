@@ -24,12 +24,13 @@ import {
   Legend
 } from "recharts";
 import { api } from "@/lib/api";
+import { PUNE_LOCALITIES } from "@/lib/puneData";
 import { Locality } from "@/types";
 
 export default function MarketTrendsPage() {
-  const [localities, setLocalities] = useState<Locality[]>([]);
+  const [localities, setLocalities] = useState<Locality[]>(PUNE_LOCALITIES);
   const [timeRange, setTimeRange] = useState<string>("1Y");
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     async function loadData() {
