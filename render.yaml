@@ -31,3 +31,4 @@ services:
           type: web
           name: propvalue-backend
           property: host
+
