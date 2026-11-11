@@ -1,5 +1,5 @@
 from contextlib import asynccontextmanager
-from fastapi import FastAPI
+from fastapi import FastAPI, Response
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
 from app.api.v1.router import api_router
@@ -33,6 +33,10 @@ app.add_middleware(
 
 # Mount API v1 router
 app.include_router(api_router, prefix=settings.API_V1_STR)
+
+@app.get("/favicon.ico", include_in_schema=False)
+def favicon():
+    return Response(status_code=204)
 
 @app.get("/health", tags=["Health"])
 def health_check():
